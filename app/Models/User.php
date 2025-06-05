@@ -60,4 +60,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function setor()
+    {
+        return $this->belongsTo(Setor::class);
+    }
 }

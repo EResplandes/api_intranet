@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Models\Avisos;
 use App\Models\Banners;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\UsuarioResource;
+use App\Http\Resources\AvisoResource;
 
 class IntranetService
 {
@@ -16,10 +18,10 @@ class IntranetService
             // Levantamento de Aniversariantes do Mês
             $mesAtual = date('m');
 
-            $aniversariantes = User::where('mes', $mesAtual)->get();
+            $aniversariantes = UsuarioResource::collection(User::where('mes', $mesAtual)->get());
 
             // Levantamento de Avisos Importantes
-            $avisos = Avisos::where('ativo', 1)->get();
+            $avisos = AvisoResource::collection(Avisos::where('ativo', 1)->get());
 
             // Levantamento de Banners Ativos
             $banners = Banners::where('ativo', 1)->get();

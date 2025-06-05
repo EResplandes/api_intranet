@@ -14,4 +14,9 @@ class Avisos extends Model
         'ativo',
         'usuario_id',
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }
